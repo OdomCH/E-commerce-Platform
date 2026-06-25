@@ -1,114 +1,222 @@
 # 🛒 E-Commerce Platform
 
-A modern full-stack E-Commerce Platform built with React, Vite, Node.js, Express, PostgreSQL, and Prisma.
+![React](https://img.shields.io/badge/React-Frontend-61DAFB?logo=react)
+![Vite](https://img.shields.io/badge/Vite-Build_Tool-646CFF?logo=vite)
+![Node.js](https://img.shields.io/badge/Node.js-Backend-339933?logo=node.js)
+![Express.js](https://img.shields.io/badge/Express.js-API-000000?logo=express)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-Database-4169E1?logo=postgresql)
+![Prisma](https://img.shields.io/badge/Prisma-ORM-2D3748?logo=prisma)
+![License](https://img.shields.io/badge/License-MIT-green)
 
-## 🚀 Overview
+A modern, scalable, and responsive E-Commerce Platform built using React, Vite, Node.js, Express.js, PostgreSQL, and Prisma ORM.
 
-This project is a professional online shopping platform that allows customers to browse products, manage their cart, place orders, and track purchases. Administrators can manage products, categories, users, and orders through a dedicated dashboard.
+---
+
+## 📖 Project Overview
+
+This project is designed to provide a complete online shopping experience for customers and a powerful management dashboard for administrators.
+
+The platform includes product browsing, shopping cart functionality, secure authentication, order management, and an admin dashboard for managing products, users, and sales.
 
 ---
 
 ## ✨ Features
 
-### Customer Features
-- 🔐 User Authentication (Login/Register)
-- 👤 User Profile Management
-- 🛍️ Product Browsing
-- 🔎 Product Search & Filtering
-- ❤️ Wishlist
-- 🛒 Shopping Cart
-- 💳 Checkout System
-- 📦 Order Tracking
-- 📜 Order History
-- 🌙 Dark Mode Support
+### 👤 Customer Features
 
-### Admin Features
-- 📊 Dashboard Analytics
-- 📦 Product Management
-- 🏷️ Category Management
-- 👥 User Management
-- 📋 Order Management
-- 💰 Sales Reports
+- User Registration
+- User Login & Authentication
+- JWT Authentication
+- Profile Management
+- Product Search
+- Product Filtering
+- Product Categories
+- Product Details
+- Shopping Cart
+- Wishlist
+- Checkout System
+- Order History
+- Order Tracking
+- Responsive Design
+- Dark Mode
 
 ---
 
-## 🛠️ Tech Stack
+### 🔧 Admin Features
+
+- Admin Dashboard
+- Manage Products
+- Manage Categories
+- Manage Orders
+- Manage Users
+- Inventory Management
+- Sales Analytics
+- Customer Management
+
+---
+
+## 🛠️ Technology Stack
 
 ### Frontend
+
 - React
 - Vite
 - Tailwind CSS
-- React Router
+- React Router DOM
 - Axios
 - Framer Motion
 
 ### Backend
+
 - Node.js
 - Express.js
 - JWT Authentication
+- Bcrypt.js
 - Multer
 
 ### Database
+
 - PostgreSQL
 - Prisma ORM
 
-### Deployment
-- Docker
-- Nginx
-- GitHub Actions
+### Development Tools
+
+- Git
+- GitHub
+- Postman
+- VS Code
 
 ---
 
 ## 📁 Project Structure
 
 ```text
-ecommerce-platform/
+E-commerce-Platform/
 │
 ├── frontend/
+│   │
 │   ├── public/
+│   │
 │   └── src/
+│       │
 │       ├── assets/
 │       ├── components/
 │       ├── pages/
 │       ├── admin/
+│       ├── layouts/
 │       ├── routes/
 │       ├── services/
 │       ├── hooks/
 │       ├── context/
 │       ├── store/
-│       └── utils/
+│       ├── utils/
+│       ├── App.jsx
+│       └── main.jsx
 │
 ├── backend/
+│   │
 │   ├── src/
+│   │   │
 │   │   ├── config/
 │   │   ├── controllers/
 │   │   ├── routes/
 │   │   ├── middleware/
 │   │   ├── services/
 │   │   ├── validators/
+│   │   ├── utils/
 │   │   ├── prisma/
-│   │   └── utils/
+│   │   ├── app.js
+│   │   └── server.js
 │   │
-│   ├── uploads/
-│   └── .env
+│   └── uploads/
 │
-├── database/
 ├── docs/
-└── README.md
+├── database/
+├── README.md
+└── .gitignore
 ```
 
 ---
 
-## ⚙️ Installation
+## 🗄️ Database Design
+
+### Users
+
+```text
+id
+name
+email
+password
+role
+created_at
+```
+
+### Categories
+
+```text
+id
+name
+created_at
+```
+
+### Products
+
+```text
+id
+category_id
+name
+description
+price
+stock
+image
+created_at
+```
+
+### Orders
+
+```text
+id
+user_id
+total_price
+status
+created_at
+```
+
+### OrderItems
+
+```text
+id
+order_id
+product_id
+quantity
+price
+```
+
+### Payments
+
+```text
+id
+order_id
+amount
+method
+status
+```
+
+---
+
+## 🚀 Installation
 
 ### Clone Repository
 
 ```bash
-git clone https://github.com/yourusername/ecommerce-platform.git
-cd ecommerce-platform
+git clone https://github.com/OdomCH/E-commerce-Platform.git
+
+cd E-commerce-Platform
 ```
 
-### Frontend Setup
+---
+
+## 📦 Frontend Setup
 
 ```bash
 cd frontend
@@ -118,13 +226,15 @@ npm install
 npm run dev
 ```
 
-Frontend will run at:
+Frontend URL:
 
 ```text
 http://localhost:5173
 ```
 
-### Backend Setup
+---
+
+## ⚙️ Backend Setup
 
 ```bash
 cd backend
@@ -134,7 +244,7 @@ npm install
 npm run dev
 ```
 
-Backend will run at:
+Backend URL:
 
 ```text
 http://localhost:5000
@@ -142,50 +252,63 @@ http://localhost:5000
 
 ---
 
-## 🗄️ Environment Variables
+## 🔐 Environment Variables
 
-Create a `.env` file inside the backend directory:
+Create a `.env` file inside the backend folder.
 
 ```env
 PORT=5000
 
 DATABASE_URL="postgresql://username:password@localhost:5432/ecommerce_db"
 
-JWT_SECRET=your_jwt_secret
+JWT_SECRET=your_super_secret_key
 
 JWT_EXPIRES_IN=7d
 ```
 
 ---
 
-## 🧱 Database Migration
+## 🧱 Prisma Setup
+
+Generate Prisma Client:
+
+```bash
+npx prisma generate
+```
+
+Run Migration:
 
 ```bash
 npx prisma migrate dev
+```
 
-npx prisma generate
+Open Prisma Studio:
+
+```bash
+npx prisma studio
 ```
 
 ---
 
-## 🔑 User Roles
-
-| Role | Permissions |
-|--------|-------------|
-| Customer | Browse products, order items, manage profile |
-| Admin | Manage products, users, orders, analytics |
-
----
-
-## 📸 Screenshots
+## 📷 Screenshots
 
 ### Home Page
 
 Add screenshot here
 
+---
+
 ### Product Page
 
 Add screenshot here
+
+---
+
+### Shopping Cart
+
+Add screenshot here
+
+---
 
 ### Admin Dashboard
 
@@ -193,25 +316,71 @@ Add screenshot here
 
 ---
 
-## 📈 Future Enhancements
+## 🔮 Future Improvements
 
 - AI Product Recommendations
 - Product Reviews & Ratings
-- Multi-Vendor Marketplace
-- Real-Time Notifications
-- Mobile Application
+- Email Notifications
+- Multi-language Support
 - Khmer Language Support
-- Online Payment Gateway Integration
+- Stripe Payment Integration
+- PayPal Integration
+- Mobile Application
+- Docker Deployment
+- Cloud Hosting
 
 ---
 
-## 👨‍💻 Author
+## 🎯 Learning Objectives
 
-**Odom**
+This project demonstrates:
 
-Student Developer | Full Stack Developer
+- Frontend Development with React
+- RESTful API Development
+- Authentication & Authorization
+- Database Design
+- State Management
+- Full Stack Development
+- Software Architecture
+- Deployment Workflow
 
-GitHub: https://github.com/yourusername
+---
+
+## 👨‍💻 Developer
+
+### OdomCH
+
+Software Engineering Student
+
+Passionate about:
+
+- Full Stack Development
+- Cloud Computing
+- Web Technologies
+- Database Systems
+- Software Architecture
+
+GitHub Profile:
+
+👉 https://github.com/OdomCH
+
+Project Repository:
+
+👉 https://github.com/OdomCH/E-commerce-Platform
+
+---
+
+## 🤝 Contributing
+
+Contributions, issues, and feature requests are welcome.
+
+Feel free to fork this repository and submit a pull request.
+
+---
+
+## ⭐ Support
+
+If you like this project, please consider giving it a star ⭐ on GitHub.
 
 ---
 
@@ -219,6 +388,8 @@ GitHub: https://github.com/yourusername
 
 This project is licensed under the MIT License.
 
+Copyright © 2026 OdomCH
+
 ---
 
-⭐ If you like this project, don't forget to star the repository.
+### Built with ❤️ by OdomCH
